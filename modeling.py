@@ -53,7 +53,7 @@ class CrossEncoder(nn.Module):
             cls, model_args: ModelArguments, data_args: DataArguments, train_args: TrainingArguments,
             *args, **kwargs
     ):
-        hf_model = AutoModelForSequenceClassification.from_pretrained(*args, **kwargs)
+        hf_model = AutoModelForSequenceClassification.from_pretrained(trust_remote_code=True, *args, **kwargs)
         reranker = cls(hf_model, model_args, data_args, train_args)
         return reranker
 
